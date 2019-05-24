@@ -6,7 +6,7 @@ const bot = new Discord.Client({
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
-  bot.user.setActivity("The Prison | Prefix: !", {
+  bot.user.setActivity("The Prison | !cmds or !commands", {
     type: "WATCHING"
   });
 })
@@ -21,12 +21,12 @@ bot.on("message", message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
 
-  if (cmd === `commands`) {
+  if (cmd === `commands` || cmd === `cmds`) {
     const cmdsEmbed = new Discord.RichEmbed()
       .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
       .setThumbnail(bot.user.avatarURL)
       .setTitle("Commands")
-      .setDescription("**addrole** | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user")
+      .setDescription("**addrole** | Moderation | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Moderation | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user")
       .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
       .setTimestamp();
     message.reply("Check your DMs.")
