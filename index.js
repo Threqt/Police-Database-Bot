@@ -23,7 +23,13 @@ bot.on("message", message => {
 
   if (cmd === `cmds` || cmd === `commands`) {
     const cmdsEmbed = new Discord.RichEmbed()
-
+      .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+      .setThumbnail(bot.user.avatarURL)
+      .setTitle("Commands")
+      .setDescription("**addrole** | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user")
+      .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+      .setTimestamp();
+    message.author.send(cmdsEmbed)
   } else
   if (cmd === `addrole`) {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
