@@ -29,23 +29,15 @@ bot.on("message", message => {
 
   if (cmd === `commands` || cmd === `cmds`) {
     const cmdsEmbed = new Discord.RichEmbed()
-      .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
-      .setThumbnail(bot.user.avatarURL)
       .setTitle("Commands")
       .setDescription("**addrole** | Moderation | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Moderation | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user \n \n **nick** or **nickname** | Moderation | Usage: !nick User#Discriminator Nickname | Sets the nickname of the specified user to the specified content")
-      .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
-      .setTimestamp();
     message.reply("Check your DMs.")
     message.author.send(cmdsEmbed)
   } else
   if (cmd === `addrole`) {
     const invalidUsage = new Discord.RichEmbed()
-    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
-    .setThumbnail(bot.user.avatarURL)
-    .setTitle("Command: addrole")
-    .setDescription("**Description:** Adds the specified role to the specified user \n **Usage:** !addrole User#Discriminator RoleName \n **Example:** !addrole @Threqt Authorized Personnel")
-    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
-    .setTimestamp();
+      .setTitle("Command: addrole")
+      .setDescription("**Description:** Adds the specified role to the specified user \n **Usage:** !addrole User#Discriminator RoleName \n **Example:** !addrole @Threqt Authorized Personnel")
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
@@ -91,12 +83,8 @@ bot.on("message", message => {
   } else
   if (cmd === `delrole`) {
     const invalidUsage = new Discord.RichEmbed()
-    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
-    .setThumbnail(bot.user.avatarURL)
-    .setTitle("Command: delrole")
-    .setDescription("**Description:** Removes the specified role from the specified user \n **Usage:** !delrole User#Discriminator RoleName \n **Example:** !delrole @Threqt Authorized Personnel")
-    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
-    .setTimestamp();
+      .setTitle("Command: delrole")
+      .setDescription("**Description:** Removes the specified role from the specified user \n **Usage:** !delrole User#Discriminator RoleName \n **Example:** !delrole @Threqt Authorized Personnel")
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
@@ -140,12 +128,8 @@ bot.on("message", message => {
   } else
   if (cmd === `nick` || cmd === `nickname`) {
     const invalidUsage = new Discord.RichEmbed()
-    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
-    .setThumbnail(bot.user.avatarURL)
-    .setTitle("Command: nick/nickname")
-    .setDescription("**Description:** Changes the nickname of the specified user \n **Usage:** !nick/nickname User#Discriminator NewNickname \n **Example:** !nick @Threqt Threqt | CST")
-    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
-    .setTimestamp();
+      .setTitle("Command: nick/nickname")
+      .setDescription("**Description:** Changes the nickname of the specified user \n **Usage:** !nick/nickname User#Discriminator NewNickname \n **Example:** !nick @Threqt Threqt | CST")
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
