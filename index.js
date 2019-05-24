@@ -26,7 +26,7 @@ bot.on("message", message => {
       .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
       .setThumbnail(bot.user.avatarURL)
       .setTitle("Commands")
-      .setDescription("**addrole** | Moderation | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Moderation | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user \n **nick** or **nickname** | Moderation | Usage: !nick User#Discriminator Nickname | Sets the nickname of the specified user to the specified content")
+      .setDescription("**addrole** | Moderation | Usage: !addrole User#Discriminator RoleName | Adds the specified role to the specified player. \n \n **delrole** | Moderation | Usage: !delrole User#Discriminator RoleName | Removes the specified role from the specified user \n \n **nick** or **nickname** | Moderation | Usage: !nick User#Discriminator Nickname | Sets the nickname of the specified user to the specified content")
       .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
       .setTimestamp();
     message.reply("Check your DMs.")
