@@ -39,11 +39,18 @@ bot.on("message", message => {
     message.author.send(cmdsEmbed)
   } else
   if (cmd === `addrole`) {
+    const invalidUsage = new Discord.RichEmbed()
+    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+    .setThumbnail(bot.user.avatarURL)
+    .setTitle("Command: addrole")
+    .setDescription("**Description:** Adds the specified role to the specified user \n **Usage:** !addrole User#Discriminator RoleName \n **Example:** !addrole @Threqt Authorized Personnel")
+    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+    .setTimestamp();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
     if (message.mentions.users.size === 0) {
-      return message.reply("Please mention a user.").then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     let roleMember = message.guild.member(message.mentions.users.first())
     if (!roleMember) {
@@ -51,7 +58,7 @@ bot.on("message", message => {
     }
     let role = args.slice(message.mentions.members.size).join(' ')
     if (!role) {
-      return message.reply('Please add a role.').then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     let realrole = message.guild.roles.find(`name`, role)
     if (!realrole) {
@@ -83,11 +90,18 @@ bot.on("message", message => {
     })
   } else
   if (cmd === `delrole`) {
+    const invalidUsage = new Discord.RichEmbed()
+    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+    .setThumbnail(bot.user.avatarURL)
+    .setTitle("Command: delrole")
+    .setDescription("**Description:** Removes the specified role from the specified user \n **Usage:** !delrole User#Discriminator RoleName \n **Example:** !delrole @Threqt Authorized Personnel")
+    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+    .setTimestamp();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
     if (message.mentions.users.size === 0) {
-      return message.reply("Please mention a user.").then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     let roleMember = message.guild.member(message.mentions.users.first())
     if (!roleMember) {
@@ -95,7 +109,7 @@ bot.on("message", message => {
     }
     let role = args.slice(message.mentions.members.size).join(' ')
     if (!role) {
-      return message.reply('Please add a role.').then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     let realrole = message.guild.roles.find(`name`, role)
     if (!realrole) {
@@ -125,11 +139,18 @@ bot.on("message", message => {
     })
   } else
   if (cmd === `nick` || cmd === `nickname`) {
+    const invalidUsage = new Discord.RichEmbed()
+    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+    .setThumbnail(bot.user.avatarURL)
+    .setTitle("Command: nick/nickname")
+    .setDescription("**Description:** Changes the nickname of the specified user \n **Usage:** !nick/nickname User#Discriminator NewNickname \n **Example:** !nick @Threqt Threqt | CST")
+    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+    .setTimestamp();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
     if (message.mentions.users.size === 0) {
-      return message.reply("Please mention a user.").then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     let roleMember = message.guild.member(message.mentions.users.first())
     if (!roleMember) {
@@ -138,7 +159,7 @@ bot.on("message", message => {
     const oldnickname = roleMember.nickname
     let role = args.slice(message.mentions.members.size).join(' ')
     if (!role) {
-      return message.reply('Please add a nickname.').then(r => r.delete(5000))
+      return message.channel.send(invalidUsage)
     }
     if (roleMember.highestRole.position > message.member.highestRole.position) {
       return message.reply("Cannot nickname this person!").then(r => r.delete(5000));
