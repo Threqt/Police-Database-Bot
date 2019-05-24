@@ -22,7 +22,8 @@ bot.on("message", message => {
   const cmd = args.shift().toLowerCase();
 
   if (cmd === `cmds` || cmd === `commands`) {
-    message.channel.send("Pong!")
+    const cmdsEmbed = new Discord.RichEmbed()
+
   } else
   if (cmd === `addrole`) {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
@@ -62,7 +63,7 @@ bot.on("message", message => {
       .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
       .setTimestamp();
 
-    roleMember.addRole(realrole.id).then(message => {
+    roleMember.addRole(realrole.id).then(messag => {
       message.reply(`${message.author.username} has added the role ${realrole.name} to ${roleMember.user.username}`)
       let channel = message.guild.channels.find(`name`, `bot-logs`)
       channel.send(roleEmbed);
