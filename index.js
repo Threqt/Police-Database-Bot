@@ -119,7 +119,6 @@ bot.on("message", message => {
     })
   } else
   if (cmd === `nick` || cmd === `nickname`) {
-    const oldnickname = message.member.nickname
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       return message.reply("Insufficient Permissions.").then(r => r.delete(5000))
     }
@@ -130,6 +129,7 @@ bot.on("message", message => {
     if (!roleMember) {
       return message.reply("Invalid Member").then(r => r.delete(5000))
     }
+    const oldnickname = roleMember.nickname
     let role = args.slice(message.mentions.members.size).join(' ')
     if (!role) {
       return message.reply('Please add a nickname.').then(r => r.delete(5000))
