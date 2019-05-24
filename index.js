@@ -27,4 +27,4 @@ bot.on("error", (e) => console.error(e));
 bot.on("warn", (e) => console.warn(e));
 bot.on("debug", (e) => console.info(e));
 
-bot.login(config.token)
+bot.login(process.env.token)
