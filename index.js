@@ -11,6 +11,12 @@ bot.on("ready", async () => {
   });
 })
 
+bot.on(`guildMemberAdd`, member => {
+  console.log(`User ` + member.user.username + ` has left HBC and join HGC`)
+  var role = member.guild.roles.find('name', 'Awaiting Tryout')
+  member.addRole(role)
+});
+
 bot.on("message", message => {
   if (message.author.bot) return;
 
