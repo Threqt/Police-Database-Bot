@@ -17,6 +17,74 @@ bot.on(`guildMemberAdd`, member => {
   member.addRole(role)
 });
 
+//Asyncs
+async function patrolLog(bot, message) {
+  message.reply("please check DM's.")
+  message.author.send("Alright, let's start the logging process. Enter your roblox username. Use cancel to cancel.")
+  const filter = m => m.author.id === message.author.id
+  const dmchannel = await message.author.createDM();
+  let collected = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const rblxname = collected.first().content
+  message.author.send("Great. Now enter your division rank in CG. Example: Sergeant Major.")
+  const collected2 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected2.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const rank = collected2.first().content
+  message.author.send("Enter the time you started your tour of duty. Example: 10:00 AM")
+  const collected3 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected3.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const startime = collected3.first().content
+  message.author.send("Enter the time you ended your tour of duty. Example: 8:00 PM")
+  const collected4 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected4.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const endtime = collected4.first().content
+  message.author.send("Send a link of the proof. It must be valid.")
+  const collected5 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected5.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const proof = collected5.first().content
+  message.author.send("All done!")
+  const patrolEmbed = new Discord.RichEmbed()
+    .setColor("#832B29")
+    .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+    .setThumbnail(bot.user.avatarURL)
+    .setTitle("PATROL LOG")
+    .setDescription(`**Name:** ${rblxname} \n **Rank:** ${rank} \n **Patrol Start Time:** ${startime} \n **Patrol End Time:** ${endtime} \n **Proof:** ${proof}`)
+    .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+    .setTimestamp();
+  let channel = message.guild.channels.find(`name`, `patrol-logs`)
+  message.channel.send(patrolEmbed)
+}
+
 bot.on("message", message => {
   if (message.author.bot) return;
 
@@ -172,6 +240,9 @@ bot.on("message", message => {
       let channel = message.guild.channels.find(`name`, `bot-logs`)
       channel.send(roleEmbed);
     })
+  } else
+  if (cmd === `logpatrol`) {
+    patrolLog(bot, message)
   }
 });
 
