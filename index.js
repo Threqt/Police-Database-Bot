@@ -82,7 +82,7 @@ async function patrolLog(bot, message) {
     .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
     .setTimestamp();
   let channel = message.guild.channels.find(`name`, `patrol-logs`)
-  message.channel.send(patrolEmbed)
+  channel.send(patrolEmbed)
 }
 
 bot.on("message", message => {
