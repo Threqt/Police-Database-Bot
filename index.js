@@ -6,7 +6,7 @@ const bot = new Discord.Client({
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
-  bot.user.setActivity("The Prison | !cmds or !commands | Made by Threqt#3799", {
+  bot.user.setActivity("The Prison | !cmds or !commands | Made by Threqt#4377", {
     type: "WATCHING"
   });
 })
