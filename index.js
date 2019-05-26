@@ -85,6 +85,77 @@ async function patrolLog(bot, message) {
   channel.send(patrolEmbed)
 }
 
+async function logInactivity(bot, message) {
+  message.reply("please check DM's.")
+  message.author.send("Alright, let's start the inactivity notice process. Enter your roblox username. Use cancel to cancel.")
+  const filter = m => m.author.id === message.author.id
+  const dmchannel = await message.author.createDM();
+  let collected = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const rblxname = collected.first().content
+  message.author.send("Great. Now enter the duration of your inactivity. Use cancel to cancel.")
+  const collected2 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected2.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const rank = collected2.first().content
+  message.author.send("Enter the reason of your inactivity. Use cancel to cancel.")
+  const collected3 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected3.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  const startime = collected3.first().content
+  message.author.send("Enter a note if you have any. Use cancel to cancel or skip if you have no note.")
+  const collected4 = await dmchannel.awaitMessages(filter, {
+    max: 1,
+    time: 1200000,
+    errors: ['time']
+  })
+  if (collected4.first().content.toLowerCase() === "cancel") {
+    return message.author.send("Cancelled.")
+  }
+  if (collected4.first().content.toLowerCase() === "skip") {
+    message.author.send("All done!")
+    const patrolEmbed = new Discord.RichEmbed()
+      .setColor("#832B29")
+      .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+      .setThumbnail(bot.user.avatarURL)
+      .setTitle("INACTIVITY NOTICE")
+      .setDescription(`**Name:** ${rblxname} \n **Duration:** ${rank} \n **Reason:** ${startime}`)
+      .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+      .setTimestamp();
+    let channel = message.guild.channels.find(`name`, `inactivity-notices`)
+    return channel.send(patrolEmbed)
+  } else {
+    const endtime = collected4.first().content
+    message.author.send("All done!")
+    const patrolEmbed = new Discord.RichEmbed()
+      .setColor("#832B29")
+      .setAuthor(`Coruscant Guard Bot`, bot.user.avatarURL)
+      .setThumbnail(bot.user.avatarURL)
+      .setTitle("INACTIVITY NOTICE")
+      .setDescription(`**Name:** ${rblxname} \n **Duration:** ${rank} \n **Reason:** ${startime} \n **Note:** ${endtime}`)
+      .setFooter("Prefix: ! | This bot is still in it's early phases", bot.user.avatarURL)
+      .setTimestamp();
+    let channel = message.guild.channels.find(`name`, `inactivity-notices`)
+    return channel.send(patrolEmbed)
+  }
+}
+
 bot.on("message", message => {
   if (message.author.bot) return;
 
@@ -243,6 +314,9 @@ bot.on("message", message => {
   } else
   if (cmd === `logpatrol`) {
     patrolLog(bot, message)
+  } else
+  if (cmd === `loginactivity`) {
+    logInactivity(bot, message)
   }
 });
 
