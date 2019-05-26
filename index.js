@@ -32,7 +32,7 @@ async function patrolLog(bot, message) {
     return message.author.send("Cancelled.")
   }
   const rblxname = collected.first().content
-  message.author.send("Great. Now enter your division rank in CG. Example: Sergeant Major.")
+  message.author.send("Great. Now enter your division rank in CG. Example: Sergeant Major. Use cancel to cancel.")
   const collected2 = await dmchannel.awaitMessages(filter, {
     max: 1,
     time: 1200000,
@@ -42,7 +42,7 @@ async function patrolLog(bot, message) {
     return message.author.send("Cancelled.")
   }
   const rank = collected2.first().content
-  message.author.send("Enter the time you started your tour of duty. Example: 10:00 AM")
+  message.author.send("Enter the time you started your tour of duty. Example: 10:00 AM. Use cancel to cancel.")
   const collected3 = await dmchannel.awaitMessages(filter, {
     max: 1,
     time: 1200000,
@@ -52,7 +52,7 @@ async function patrolLog(bot, message) {
     return message.author.send("Cancelled.")
   }
   const startime = collected3.first().content
-  message.author.send("Enter the time you ended your tour of duty. Example: 8:00 PM")
+  message.author.send("Enter the time you ended your tour of duty. Example: 8:00 PM. Use cancel to cancel.")
   const collected4 = await dmchannel.awaitMessages(filter, {
     max: 1,
     time: 1200000,
@@ -62,7 +62,7 @@ async function patrolLog(bot, message) {
     return message.author.send("Cancelled.")
   }
   const endtime = collected4.first().content
-  message.author.send("Send a link of the proof. It must be valid.")
+  message.author.send("Send a link of the proof. It must be valid. Use cancel to cancel.")
   const collected5 = await dmchannel.awaitMessages(filter, {
     max: 1,
     time: 1200000,
