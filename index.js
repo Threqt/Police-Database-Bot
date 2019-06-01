@@ -7,13 +7,13 @@ const bot = new Discord.Client({
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
-  bot.user.setActivity("The Prison | !cmds or !commands | Made by Threqt#4377", {
+  bot.user.setActivity("the prison | !cmds or !commands | Made by Threqt#4377", {
     type: "WATCHING"
   });
 })
 
 bot.on(`guildMemberAdd`, member => {
-  console.log(`User ` + member.user.username + ` has left HBC and join HGC`)
+  console.log(`User ` + member.user.username + ` has joined CG`)
   var role = member.guild.roles.find('name', 'Awaiting Tryout')
   member.addRole(role)
 });
@@ -392,7 +392,7 @@ bot.on("message", async message => {
       let status = await rbx.getStatus(userId)
       console.log(status)
       if(status === verifyMsg){
-        return message.author.send("You have successfully been verified")
+        return message.author.send("You have successfully been verified!")
       } else {
         return message.author.send("Status did not match.")
       }
