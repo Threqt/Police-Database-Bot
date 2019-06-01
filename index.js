@@ -156,7 +156,38 @@ async function logInactivity(bot, message) {
   }
 }
 
-bot.on("message", message => {
+async function getUser(bot, message, rbx, user) {
+  let nig = await rbx.getIdFromUsername(user).catch(function(error) {
+    if (error.reason = "User not found") {
+      return message.channel.send("Invalid User")
+    }
+  })
+  return nig
+}
+
+async function createRandomSentence(bot, message, rbx) {
+  var words = ['cat', 'dog', 'shark', 'skunk', 'weasel', 'disc', 'me']
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  function selectWords() {
+    w1 = words[getRandomInt(7)]
+    w2 = words[getRandomInt(7)]
+    w3 = words[getRandomInt(7)]
+    w4 = words[getRandomInt(7)]
+    w5 = words[getRandomInt(7)]
+    w6 = words[getRandomInt(7)]
+    w7 = words[getRandomInt(7)]
+    w8 = words[getRandomInt(7)]
+    w9 = words[getRandomInt(7)]
+    w10 = words[getRandomInt(7)]
+   let string = `${w1} ${w2} ${w3} ${w4} ${w5} ${w6} ${w7} ${w8} ${w9} ${w10}`
+   return string
+  }
+  return selectWords()
+}
+
+bot.on("message", async message => {
   if (message.author.bot) return;
 
   if (message.content.indexOf(config.prefix) !== 0) return;
@@ -317,6 +348,54 @@ bot.on("message", message => {
   } else
   if (cmd === `loginactivity`) {
     logInactivity(bot, message)
+  } else
+  if(cmd === `verify`){
+    //!verify user
+    message.reply(`Please check dms!`) //This replies to the command -suggest
+    message.author.send("Please put your ROBLOX name here. You have 10 minutes. Use 'cancel' to cancel.") //message.author.send dms the person a message
+    const filter = m => m.author.id === message.author.id; //this is going to be our message filter. This makes sure the person who's sending the message isn't the author of the message (the bot)
+    const dmchannel = await message.author.createDM(); //So, await basically means that it waits until the promise (code) is executed. So this waits until the DM is created. By waiting, it pauses the code.
+    const collected = await dmchannel.awaitMessages(filter, {
+      max: 1,
+      time: 600000,
+      errors: ['time']
+    }).catch(err => {
+      if (err.reason = 'time') {
+        return message.author.send("Timed out")
+      }
+    }) //We are using await here because if no message is collected, we can't do anything. So, since the max messages is 1, the collector waits until it grabs a message, then continues.
+    let message1 = await collected.first().content //This basically waits for the message from the collector above to be confirmed.
+    if (message1.toLowerCase() == 'cancel') {
+      return message.author.send("Cancelled.")
+    }
+    let user = message1
+    let userId = await getUser(bot, message, rbx, user)
+    let verifyMsg = await createRandomSentence(bot, message, rbx)
+    console.log(verifyMsg)
+    let tags = '`'
+    message.author.send(`If you're really ${tags}${user}${tags}, reply with ${tags}cancel${tags} to cancel and ${tags}done${tags} when you finish putting this message as your ROBLOX status.: \n${tags}${verifyMsg}${tags}`, {files: ["./images/Example.PNG"]})
+    const collected2 = await dmchannel.awaitMessages(filter, {
+      max: 1,
+      time: 600000,
+      errors: ['time']
+    }).catch(err => {
+      if (err.reason = 'time') {
+        return message.author.send("Timed out")
+      }
+    })
+    let message2 = await collected2.first().content
+    if (message2.toLowerCase() == 'cancel') {
+      return message.author.send("Cancelled.")
+    }
+    if(message2.toLowerCase() == 'done'){
+      let status = await rbx.getStatus(userId)
+      console.log(status)
+      if(status === verifyMsg){
+        return message.author.send("You have successfully been verified")
+      } else {
+        return message.author.send("Status did not match.")
+      }
+    }
   }
 });
 

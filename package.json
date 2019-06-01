@@ -9,6 +9,7 @@
   "author": "threqt",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.0"
+    "discord.js": "^11.5.0",
+    "noblox.js": "^4.2.6"
   }
 }
