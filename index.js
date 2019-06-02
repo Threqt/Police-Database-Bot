@@ -158,11 +158,7 @@ async function logInactivity(bot, message) {
 }
 
 async function getUser(bot, message, rbx, user) {
-  let nig = await rbx.getIdFromUsername(user).catch(function(error) {
-    if (error.reason = "User not found") {
-      return message.channel.send("Invalid User")
-    }
-  })
+  let nig = await rbx.getIdFromUsername(user)
   return nig
 }
 
@@ -370,7 +366,11 @@ bot.on("message", async message => {
       return message.author.send("Cancelled.")
     }
     let user = message1
-    let userId = await getUser(bot, message, rbx, user)
+    let userId = await getUser(bot, message, rbx, user).catch(function(error) {
+      if (error.reason = "User not found") {
+        return message.author.send("Invalid User")
+      }
+    })
     let verifyMsg = await createRandomSentence(bot, message, rbx)
     console.log(verifyMsg)
     let tags = '`'
