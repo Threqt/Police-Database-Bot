@@ -17,6 +17,11 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
+
+  if(cmd === `store`){
+    db.set(`coen`, 'hiello')
+    console.log(db.fetch(`coen`))
+  }
 });
 
 bot.on("error", (e) => console.error(e));
