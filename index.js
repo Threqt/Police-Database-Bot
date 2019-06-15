@@ -19,7 +19,6 @@ bot.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   if(cmd === `store`){
-    db.set(`coen`, 'hiello')
     console.log(db.fetch(`coen`))
   }
 });
