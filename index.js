@@ -8,8 +8,8 @@ const db = require('quick.db')
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
-  bot.user.setActivity("the prison | !cmds or !commands | Made by Threqt#4377", {
-    type: "WATCHING"
+  bot.user.setActivity("bot related stuff", {
+    type: "PLAYING"
   });
 })
 
@@ -19,7 +19,7 @@ bot.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   if(cmd === `store`){
-    console.log(db.fetch(`coen`))
+    
   }
 });
 
