@@ -18,9 +18,6 @@ bot.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
 
-  if(cmd === `store`){
-    
-  }
 });
 
 bot.on("error", (e) => console.error(e));
