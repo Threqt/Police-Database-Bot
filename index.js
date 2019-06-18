@@ -1638,7 +1638,7 @@ bot.on("message", async message => {
 
   if (cmd === `ping`) {
     let msg = await message.channel.send("Testing ping...")
-    msg.edit(`Pong! Latency is ${message.createdAt - msg.createdAt}ms. API Latency is ${bot.ping}ms.`)
+    msg.edit(`Pong! Latency is ${msg.createdAt - message.createdAt}ms. API Latency is ${bot.ping}ms.`)
   } else
   if (cmd === `viewsection`) {
     switch (args[0]) {
