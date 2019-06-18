@@ -1642,7 +1642,7 @@ bot.on("message", async message => {
   } else
   if (cmd === `viewsection`) {
     switch (args[0]) {
-      case 1:
+      case '1':
         message.channel.send(string1)
         break;
       default:
