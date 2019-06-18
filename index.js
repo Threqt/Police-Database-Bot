@@ -1614,7 +1614,7 @@ bot.on("message", async message => {
     var string1 = `
 M = Misdemeanor F = Felony
 
-SECTION I | Crimes Against the Individual
+**SECTION I** | Crimes Against the Individual
 **101** Assault (M)
     **101(a)** Assault with a Deadly Weapon (M)
 **102** Battery (M)
@@ -1643,7 +1643,7 @@ SECTION I | Crimes Against the Individual
     var string2 = `
 M = Misdemeanor F = Felony
 
-SECTION II | Crimes Against Public and Private Property
+**SECTION II** | Crimes Against Public and Private Property
 **201** Trespassing (M)
 **202** Theft (M&F)
     **202(a)** Petty Theft (M)
@@ -1664,7 +1664,7 @@ SECTION II | Crimes Against Public and Private Property
     var string3 = `
 M = Misdemeanor F = Felony
 
-SECTION III | Crimes Against Justice
+**SECTION III** | Crimes Against Justice
 **301** Bribery (F)
     **301(a)** Bribing a Government Employee (F)
     **301(b)** Receiving a Bribe (F)
@@ -1686,7 +1686,7 @@ SECTION III | Crimes Against Justice
     var string4= `
 M = Misdemeanor F = Felony
 
-SECTION IV | Crimes Against the Public and Against Safety
+**SECTION IV** | Crimes Against the Public and Against Safety
 **401** Disorderly Conduct (M)
     **401(a)** Intoxicated and Disorderly (M)
 **402** Indecent Exposure (M)
@@ -1714,7 +1714,7 @@ SECTION IV | Crimes Against the Public and Against Safety
     var string5 = `
 M = Misdemeanor F = Felony
 
-SECTION V | Vehicular Infractions
+**SECTION V** | Vehicular Infractions
 **501** Speeding (M)
      **501(a)** Speeding 10 over
      **501(b)** Speeding 11-19 over
@@ -1751,7 +1751,7 @@ SECTION V | Vehicular Infractions
     var string6 = `
 M = Misdemeanor F = Felony
 
-SECTION VI | Deadly Weapons
+**SECTION VI** | Deadly Weapons
 **601** Unlawful Possession of a Firearm (M)
     **601(a)** Felon in Possession of a Firearm (M)
 **602** Illegal Discharge of a Firearm (M)
