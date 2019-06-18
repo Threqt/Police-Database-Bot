@@ -5,27 +5,28 @@ const bot = new Discord.Client({
   disableEverybody: true
 });
 const db = require('quick.db')
+var obj;
 
 //1 = Crimes against the individual 2 = Crimes against Public and Private Property 3 = Crimes against Justice 4 = Crimes against the Public and against safety 5 = Vehicular Infractions 6 = Deadly Weapons
 bot.findPenal = (code) => {
   switch (code.toLowerCase()) {
     //1
     case '101':
-      let obj = {
+       obj = {
         crime: 'Assault (M)',
         type: 1
       }
       return obj
       break;
     case '101a':
-      let obj = {
+       obj = {
         crime: 'Assault with a Deadly Weapon (M)',
         type: 1
       }
       return obj
       break;
     case '102':
-      let obj = {
+       obj = {
         crime: 'Battery (M)'
         ',
         type: 1
@@ -33,147 +34,147 @@ bot.findPenal = (code) => {
       return obj
       break;
     case '102a':
-      let obj = {
+       obj = {
         crime: 'Battery with intent to cause serious harm (F)',
         type: 1
       }
       return obj
       break;
     case '103b':
-      let obj = {
+       obj = {
         crime: 'Sexual Battery',
         type: 1
       }
       return obj
       break;
     case '104':
-      let obj = {
+       obj = {
         crime: 'Attempted Homocide (F)',
         type: 1
       }
       return obj
       break;
     case '105':
-      let obj = {
+       obj = {
         crime: 'Homocide (F)',
         type: 1
       }
       return obj
       break;
     case '105a':
-      let obj = {
+       obj = {
         crime: 'First Degree Homocide (F)',
         type: 1
       }
       return obj
       break;
     case '105b':
-      let obj = {
+       obj = {
         crime: 'Second Degree Homocide (F)',
         type: 1
       }
       return obj
       break;
     case '105c':
-      let obj = {
+       obj = {
         crime: 'Capital Homocide (F)',
         type: 1
       }
       return obj
       break;
     case '106':
-      let obj = {
+       obj = {
         crime: 'Manslaughter (F)',
         type: 1
       }
       return obj
       break;
     case '106a':
-      let obj = {
+       obj = {
         crime: 'Vehicle Manslaughter (M)',
         type: 1
       }
       return obj
       break;
     case '106b':
-      let obj = {
+       obj = {
         crime: 'Weaponized Manslaughter (F)',
         type: 1
       }
       return obj
       break;
     case '107':
-      let obj = {
+       obj = {
         crime: 'Torture (F)',
         type: 1
       }
       return obj
       break;
     case '107a':
-      let obj = {
+       obj = {
         crime: 'Torture with Intent to Kill (F)',
         type: 1
       }
       return obj
       break;
     case '108':
-      let obj = {
+       obj = {
         crime: 'Rape (F)',
         type: 1
       }
       return obj
       break;
     case '109':
-      let obj = {
+       obj = {
         crime: 'Harrasment (M)',
         type: 1
       }
       return obj
       break;
     case '109a':
-      let obj = {
+       obj = {
         crime: 'Sexual Harrasment (M)',
         type: 1
       }
       return obj
       break;
     case '109b':
-      let obj = {
+       obj = {
         crime: 'Stalking (M)',
         type: 1
       }
       return obj
       break;
     case '109c':
-      let obj = {
+       obj = {
         crime: 'Violating a Restraining Order (M)',
         type: 1
       }
       return obj
       break;
     case '110':
-      let obj = {
+       obj = {
         crime: 'Abuse (F&M)',
         type: 1
       }
       return obj
       break;
     case '110a':
-      let obj = {
+       obj = {
         crime: 'Domestic Abuse (F)',
         type: 1
       }
       return obj
       break;
     case '110b':
-      let obj = {
+       obj = {
         crime: 'Child Abuse/Neglect (F)',
         type: 1
       }
       return obj
       break;
     case '110c':
-      let obj = {
+       obj = {
         crime: 'Animal Abuse (M)',
         type: 1
       }
@@ -181,112 +182,112 @@ bot.findPenal = (code) => {
       break;
       //2
     case '201':
-      let obj = {
+       obj = {
         crime: 'Tresspassing (M)',
         type: 2
       }
       return obj
       break;
     case '202':
-      let obj = {
+       obj = {
         crime: 'Theft (M&F)',
         type: 2
       }
       return obj
       break;
     case '202a':
-      let obj = {
+       obj = {
         crime: 'Petty Theft (M)',
         type: 2
       }
       return obj
       break;
     case '202b':
-      let obj = {
+       obj = {
         crime: 'Theft (M)',
         type: 2
       }
       return obj
       break;
     case '202c':
-      let obj = {
+       obj = {
         crime: 'Grand Theft (F)',
         type: 2
       }
       return obj
       break;
     case '202.1c':
-      let obj = {
+       obj = {
         crime: 'Grand Theft Auto (F)',
         type: 2
       }
       return obj
       break;
     case '202.1c':
-      let obj = {
+       obj = {
         crime: 'Grand Theft of a Firearm (F)',
         type: 2
       }
       return obj
       break;
     case '203':
-      let obj = {
+       obj = {
         crime: 'Robbery (F)',
         type: 2
       }
       return obj
       break;
     case '203a':
-      let obj = {
+       obj = {
         crime: 'Armed Robbery (F)',
         type: 2
       }
       return obj
       break;
     case '204':
-      let obj = {
+       obj = {
         crime: 'Carjacking (M)',
         type: 2
       }
       return obj
       break;
     case '205':
-      let obj = {
+       obj = {
         crime: 'Forgery/Counterfeiting (F)',
         type: 2
       }
       return obj
       break;
     case '206':
-      let obj = {
+       obj = {
         crime: 'Extortion (F)',
         type: 2
       }
       return obj
       break;
     case '207':
-      let obj = {
+       obj = {
         crime: 'Possession of Stolen Property (M)',
         type: 2
       }
       return obj
       break;
     case '208':
-      let obj = {
+       obj = {
         crime: 'Fraud (F)',
         type: 2
       }
       return obj
       break;
     case '209':
-      let obj = {
+       obj = {
         crime: 'Possession of Burglary Tools (M)',
         type: 2
       }
       return obj
       break;
     case '210':
-      let obj = {
+       obj = {
         crime: 'Breaking and Entering (M)',
         type: 2
       }
@@ -294,119 +295,119 @@ bot.findPenal = (code) => {
       break;
       //3
     case '301':
-      let obj = {
+       obj = {
         crime: 'Bribery (F)',
         type: 3
       }
       return obj
       break;
     case '301a':
-      let obj = {
+       obj = {
         crime: 'Bribing a Government Official (F)',
         type: 3
       }
       return obj
       break;
     case '301b':
-      let obj = {
+       obj = {
         crime: 'Recieving a Bribe (F)',
         type: 3
       }
       return obj
       break;
     case '302':
-      let obj = {
+       obj = {
         crime: 'Refusing to Pay a Fine (M)',
         type: 3
       }
       return obj
       break;
     case '303':
-      let obj = {
+       obj = {
         crime: 'Resisting Arrest (M)',
         type: 3
       }
       return obj
       break;
     case '303a':
-      let obj = {
+       obj = {
         crime: 'Resisting with intent to injure an official (F)',
         type: 3
       }
       return obj
       break;
     case '303b':
-      let obj = {
+       obj = {
         crime: 'Escaping custody (F)',
         type: 3
       }
       return obj
       break;
     case '304':
-      let obj = {
+       obj = {
         crime: 'Obstruction (M)',
         type: 3
       }
       return obj
       break;
     case '304a':
-      let obj = {
+       obj = {
         crime: 'Misuse of a Government Hotline (M)',
         type: 3
       }
       return obj
       break;
     case '304b':
-      let obj = {
+       obj = {
         crime: 'Tampering with Evidence (M)',
         type: 3
       }
       return obj
       break;
     case '304c':
-      let obj = {
+       obj = {
         crime: 'Tresspassing a Private Crime Scene (M)',
         type: 3
       }
       return obj
       break;
     case '305':
-      let obj = {
+       obj = {
         crime: 'Harboring or Aiding a suspect (M)',
         type: 3
       }
       return obj
       break;
     case '306':
-      let obj = {
+       obj = {
         crime: 'Impersonation of a Government Employee (F)',
         type: 3
       }
       return obj
       break;
     case '307':
-      let obj = {
+       obj = {
         crime: 'Corruption (F)',
         type: 3
       }
       return obj
       break;
     case '307a':
-      let obj = {
+       obj = {
         crime: 'Corruption of Public Office (F)',
         type: 3
       }
       return obj
       break;
     case '308a':
-      let obj = {
+       obj = {
         crime: 'Corruption of Public Duty (F)',
         type: 3
       }
       return obj
       break;
     case '309':
-      let obj = {
+       obj = {
         crime: 'Contempt of Court (F)',
         type: 3
       }
@@ -414,147 +415,147 @@ bot.findPenal = (code) => {
       break;
       //4
     case '401':
-      let obj = {
+       obj = {
         crime: 'Disorderly Conduct (M)',
         type: 4
       }
       return obj
       break;
     case '401a':
-      let obj = {
+       obj = {
         crime: 'Intoxicated and Disorderly (M)',
         type: 4
       }
       return obj
       break;
     case '402':
-      let obj = {
+       obj = {
         crime: 'Indecent Exposure (M)',
         type: 4
       }
       return obj
       break;
     case '403':
-      let obj = {
+       obj = {
         crime: 'Attempted Terrorism (F)',
         type: 4
       }
       return obj
       break;
     case '404':
-      let obj = {
+       obj = {
         crime: 'Terrorism (F)',
         type: 4
       }
       return obj
       break;
     case '405':
-      let obj = {
+       obj = {
         crime: 'Distribution of an unsafe substance (F)',
         type: 4
       }
       return obj
       break;
     case '405a':
-      let obj = {
+       obj = {
         crime: 'Distribution of an environmentally unsafe substance (F)',
         type: 4
       }
       return obj
       break;
     case '405b':
-      let obj = {
+       obj = {
         crime: 'Distribution of an unsafe substance with the intent to causes harm (F)',
         type: 4
       }
       return obj
       break;
     case '406':
-      let obj = {
+       obj = {
         crime: 'Possession of a Controlled Substance (F)',
         type: 4
       }
       return obj
       break;
     case '406a':
-      let obj = {
+       obj = {
         crime: 'Class A (F)',
         type: 4
       }
       return obj
       break;
     case '406b':
-      let obj = {
+       obj = {
         crime: 'Class B (F)',
         type: 4
       }
       return obj
       break;
     case '407':
-      let obj = {
+       obj = {
         crime: 'Distribution of a Controlled Substance (F)',
         type: 4
       }
       return obj
       break;
     case '407a':
-      let obj = {
+       obj = {
         crime: 'Class A (F)',
         type: 4
       }
       return obj
       break;
     case '407b':
-      let obj = {
+       obj = {
         crime: 'Class B (F)',
         type: 4
       }
       return obj
       break;
     case '408':
-      let obj = {
+       obj = {
         crime: 'Unlawful Possession of Alcohol (M)',
         type: 4
       }
       return obj
       break;
     case '409':
-      let obj = {
+       obj = {
         crime: 'Littering (M)',
         type: 4
       }
       return obj
       break;
     case '410':
-      let obj = {
+       obj = {
         crime: 'Rioting (M)',
         type: 4
       }
       return obj
       break;
     case '410a':
-      let obj = {
+       obj = {
         crime: 'Rioting with Violence (M)',
         type: 4
       }
       return obj
       break;
     case '411':
-      let obj = {
+       obj = {
         crime: 'Disturbing the Peace (M)',
         type: 4
       }
       return obj
       break;
     case '412':
-      let obj = {
+       obj = {
         crime: 'Prostitution (M)',
         type: 4
       }
       return obj
       break;
     case '413':
-      let obj = {
+       obj = {
         crime: 'Pimping (F)',
         type: 4
       }
@@ -562,224 +563,224 @@ bot.findPenal = (code) => {
       break;
       //5
     case '501':
-      let obj = {
+       obj = {
         crime: 'Speeding (M)',
         type: 5
       }
       return obj
       break;
     case '501a':
-      let obj = {
+       obj = {
         crime: 'Speeding 10 over',
         type: 5
       }
       return obj
       break;
     case '501b':
-      let obj = {
+       obj = {
         crime: 'Speeding 11-19 over',
         type: 5
       }
       return obj
       break;
     case '501c':
-      let obj = {
+       obj = {
         crime: 'Speeding 20+ over (M)',
         type: 5
       }
       return obj
       break;
     case '501d':
-      let obj = {
+       obj = {
         crime: 'Speeding 150+ over',
         type: 5
       }
       return obj
       break;
     case '502':
-      let obj = {
+       obj = {
         crime: 'Unroadworthy Vehicle (M)',
         type: 5
       }
       return obj
       break;
     case '502a':
-      let obj = {
+       obj = {
         crime: 'No License Plate/Improper License Plate Displayed',
         type: 5
       }
       return obj
       break;
     case '502.1a':
-      let obj = {
+       obj = {
         crime: 'Other Vehicles Registration/Plate (F)',
         type: 5
       }
       return obj
       break;
     case '502.1b':
-      let obj = {
+       obj = {
         crime: 'Expired plates/registration (M)',
         type: 5
       }
       return obj
       break;
     case '502b':
-      let obj = {
+       obj = {
         crime: 'No Vehicle Lights',
         type: 5
       }
       return obj
       break;
     case '502c':
-      let obj = {
+       obj = {
         crime: 'No Turn Signals',
         type: 5
       }
       return obj
       break;
     case '502d':
-      let obj = {
+       obj = {
         crime: 'Improper Window Tint',
         type: 5
       }
       return obj
       break;
     case '502e':
-      let obj = {
+       obj = {
         crime: 'Improper Display/Use of Lights (M)',
         type: 5
       }
       return obj
       break;
     case '503':
-      let obj = {
+       obj = {
         crime: 'Improper Use of Vehicular Horn',
         type: 5
       }
       return obj
       break;
     case '504':
-      let obj = {
+       obj = {
         crime: 'DUI/DWI',
         type: 5
       }
       return obj
       break;
     case '504a':
-      let obj = {
+       obj = {
         crime: 'DWI under alcohol (M)',
         type: 5
       }
       return obj
       break;
     case '504b':
-      let obj = {
+       obj = {
         crime: 'DUI under narcotics (F)',
         type: 5
       }
       return obj
       break;
     case '505':
-      let obj = {
+       obj = {
         crime: 'Open Container of Alcohol in Vehicle',
         type: 5
       }
       return obj
       break;
     case '506':
-      let obj = {
+       obj = {
         crime: 'Improper vehicular restraint',
         type: 5
       }
       return obj
       break;
     case '506a':
-      let obj = {
+       obj = {
         crime: 'Improper restraint of a child',
         type: 5
       }
       return obj
       break;
     case '507':
-      let obj = {
+       obj = {
         crime: 'Reckless Driving (M)',
         type: 5
       }
       return obj
       break;
     case '508':
-      let obj = {
+       obj = {
         crime: 'Hit and Run (M)',
         type: 5
       }
       return obj
       break;
     case '508a':
-      let obj = {
+       obj = {
         crime: 'H&R of an Emergency Vehicle (F)',
         type: 5
       }
       return obj
       break;
     case '509':
-      let obj = {
+       obj = {
         crime: 'Failure to Provide Valid Identification (M)',
         type: 5
       }
       return obj
       break;
     case '509a':
-      let obj = {
+       obj = {
         crime: 'Failure to Provide Valid Insurance',
         type: 5
       }
       return obj
       break;
     case '509b':
-      let obj = {
+       obj = {
         crime: 'Failure to Provide Valid Registration',
         type: 5
       }
       return obj
       break;
     case '509c':
-      let obj = {
+       obj = {
         crime: 'Failure to Provide Accurate Information',
         type: 5
       }
       return obj
       break;
     case '510':
-      let obj = {
+       obj = {
         crime: 'Fleeing a Law Enforcment Officer (F)',
         type: 5
       }
       return obj
       break;
     case '511':
-      let obj = {
+       obj = {
         crime: 'Participating in a Motor Vehicle Contest (M)',
         type: 5
       }
       return obj
       break;
     case '512':
-      let obj = {
+       obj = {
         crime: 'Improperly Parked Vehicle',
         type: 5
       }
       return obj
       break;
     case '513':
-      let obj = {
+       obj = {
         crime: 'Excessively loud Exhaust Note',
         type: 5
       }
       return obj
       break;
     case '514':
-      let obj = {
+       obj = {
         crime: 'Failure to yield for an Emergency Vehicle',
         type: 5
       }
@@ -787,77 +788,77 @@ bot.findPenal = (code) => {
       break;
       //6
     case '601':
-      let obj = {
+       obj = {
         crime: 'Unlawful Possession of a Firearm (M)',
         type: 6
       }
       return obj
       break;
     case '601a':
-      let obj = {
+       obj = {
         crime: 'Felon in Possession of a Firearm (M)',
         type: 6
       }
       return obj
       break;
     case '602':
-      let obj = {
+       obj = {
         crime: 'Illegal Discharge of a Firearm (M)',
         type: 6
       }
       return obj
       break;
     case '602a':
-      let obj = {
+       obj = {
         crime: 'Illegal Discharge from a Vehicle (M)',
         type: 6
       }
       return obj
       break;
     case '602b':
-      let obj = {
+       obj = {
         crime: 'Discharging within 50 yards of an Occupied Building (M)',
         type: 6
       }
       return obj
       break;
     case '603':
-      let obj = {
+       obj = {
         crime: 'Carrying a Concealed Firearm without Permit (M)',
         type: 6
       }
       return obj
       break;
     case '604':
-      let obj = {
+       obj = {
         crime: 'Possession of a Dangerous Device (M)',
         type: 6
       }
       return obj
       break;
     case '604a':
-      let obj = {
+       obj = {
         crime: 'Possession of an Explosive Device (F)',
         type: 6
       }
       return obj
       break;
     case '605':
-      let obj = {
+       obj = {
         crime: 'Brandishing a Weapon (M)',
         type: 6
       }
       return obj
       break;
     case '605a':
-      let obj = {
+       obj = {
         crime: 'Brandishing a Firearm (M)',
         type: 6
       }
       return obj
       break;
     case '606':
-      let obj = {
+       obj = {
         crime: 'Unlawful Distribution of a Firearm (F)',
         type: 6
       }
@@ -881,7 +882,7 @@ bot.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   if (cmd === ``){
-    
+
   }
 });
 
