@@ -27,8 +27,7 @@ bot.findPenal = (code) => {
       break;
     case '102':
        obj = {
-        crime: 'Battery (M)'
-        ',
+        crime: 'Battery (M)',
         type: 1
       }
       return obj
