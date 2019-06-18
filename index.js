@@ -1594,36 +1594,6 @@ bot.findPenal = (code) => {
   }
 }
 
-var string1 = `
-M = Misdemeanor F = Felony
-
-SECTION I | Crimes Against the Individual
-101 Assault (M)
-   101(a) Assault with a Deadly Weapon (M)
-102 Battery (M)
-   102(a) Battery with intent to cause serious harm (F)
-   103(b) Sexual Battery (F)
-104 Attempted Homicide (F)
-105 Homicide (F)
-   105(a) First Degree (F)
-   105(b) Second Degree (F)
-   105 (c) Capital (F)
-106 Manslaughter (F)
-   106(a) Vehicular Manslaughter (M)
-   106(b) Weaponized Manslaughter (F)
-107 Torture (F)
-   107(a) Torture with Intent to Kill (F)
-108 Rape (F)
-109 Harassment (M)
-   109(a) Sexual Harassment (M)
-   109(b) Stalking (M)
-   109(c) Violating a Restraining Order (M)
-110 Abuse (F&M)
-   110(a) Domestic Abuse (F)
-   110(b) Child Abuse/Neglect (F)
-   110(c) Animal Abuse (M)
-`;
-
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
   bot.user.setActivity("bot related stuff", {
@@ -1641,9 +1611,177 @@ bot.on("message", async message => {
     msg.edit(`Pong! Latency is ${msg.createdAt - message.createdAt}ms. API Latency is ${bot.ping}ms.`)
   } else
   if (cmd === `viewsection`) {
+    var string1 = `
+M = Misdemeanor F = Felony
+
+SECTION I | Crimes Against the Individual
+101 Assault (M)
+    101(a) Assault with a Deadly Weapon (M)
+102 Battery (M)
+    102(a) Battery with intent to cause serious harm (F)
+    103(b) Sexual Battery (F)
+104 Attempted Homicide (F)
+105 Homicide (F)
+    105(a) First Degree (F)
+    105(b) Second Degree (F)
+    105 (c) Capital (F)
+106 Manslaughter (F)
+    106(a) Vehicular Manslaughter (M)
+    106(b) Weaponized Manslaughter (F)
+107 Torture (F)
+    107(a) Torture with Intent to Kill (F)
+108 Rape (F)
+109 Harassment (M)
+    109(a) Sexual Harassment (M)
+    109(b) Stalking (M)
+    109(c) Violating a Restraining Order (M)
+110 Abuse (F&M)
+    110(a) Domestic Abuse (F)
+    110(b) Child Abuse/Neglect (F)
+    110(c) Animal Abuse (M)
+    `;
+    var string2 = `
+M = Misdemeanor F = Felony
+
+SECTION II | Crimes Against Public and Private Property
+201 Trespassing (M)
+202 Theft (M&F)
+    202(a) Petty Theft (M)
+    202(b) Theft (M)
+    202(c) Grand Theft (F)
+      202.1(c) Grand Theft Auto (F)
+      202.2(c) Grand Theft of a Firearm (F)
+203 Robbery (F)
+    203(a) Armed Robbery (F)
+204 Carjacking (M)
+205 Forgery/Counterfeiting (F)
+206 Extortion (F)
+207 Possession of Stolen Property (M)
+208 Fraud (F)
+209 Possession of Burglary Tools (M)
+210 Breaking and Entering (M)
+    `;
+    var string3 = `
+M = Misdemeanor F = Felony
+
+SECTION III | Crimes Against Justice
+301 Bribery (F)
+    301(a) Bribing a Government Employee (F)
+    301(b) Receiving a Bribe (F)
+302 Refusing to Pay a Fine (M)
+303 Resisting Arrest (M)
+    303(a) Resisting with intent to injure an official (F)
+    303(b) Escaping custody (F)
+304 Obstruction (M)
+    304(a) Misuse of a Government Hotline (M)
+    304(b) Tampering with Evidence (M)
+    304(c) Trespassing a Private Crime Scene (M)
+305 Harboring or Aiding a subject (M)
+306 Impersonation of a government employee (F)
+307 Corruption (F)
+    307(a) Of Public Office (F)
+    307(b) Of Public Duty (F)
+308 Contempt of Court (F)
+    `;
+    var string4= `
+M = Misdemeanor F = Felony
+
+SECTION IV | Crimes Against the Public and Against Safety
+401 Disorderly Conduct (M)
+    401(a) Intoxicated and Disorderly (M)
+402 Indecent Exposure (M)
+403 Attempted Terrorism (F)
+404 Terrorism (F)
+405 Distribution of an unsafe substance (F)
+    405(a) Distribution of an environmentally unsafe substance (F)
+    405(b) Distribution of an unsafe substance with intent to cause harm (F)
+406 Possession of a Controlled Substance (F)
+    406(a) Class A (heroin, morphine) (F)
+    406(b) Class B (cocaine, crack, LSD, oxycodone, oxycontin, ecstasy, hydrochloride,
+    amphetamine. methamphetamine) (F)
+407 Distribution of a Controlled Substance (F)
+    407(a) Class A (heroin, morphine) (F)
+    407(b) Class B (cocaine, crack, LSD, oxycodone, oxycontin, ecstasy, hydrochloride,
+    amphetamine, methamphetamine) (F)
+408 Unlawful Possession of Alcohol (M)
+409 Littering (M)
+410 Rioting (M)
+    410(a) Rioting with Violence (F)
+411 Disturbing the Peace (M)
+412 Prostitution (M)
+413 Pimping (F)
+    `;
+    var string5 = `
+M = Misdemeanor F = Felony
+
+SECTION V | Vehicular Infractions
+501 Speeding (M)
+     501(a) Speeding 10 over
+     501(b) Speeding 11-10 over
+     501(c) Speeding 20+ over (M)
+     503(d) Speeding 150+ [Referring to RadariLidar speed) (F)
+502 Unroadworthy Vehicle (M)
+     502(a) No License Plate:Improper Plate Displayed
+          502.1(a) Other Vehicle Registration,Plates (F)
+          502.1(b) Expired PlatesRegistration (M)
+     502(b) NoVehicle Lights
+     502(c) No Turn Signals
+     502(d) Improper 1Mndow Tint
+     502(e) Improper Display/Use of Lights (M)
+503 Improper Use of Vehicular Horn
+504 DUI/DWI
+     504(a) DWI under Alcohol (m)
+     504(a) DUI under Narcotics (F)
+505 Open container of alcohol in vehicle (M)
+506 Improper vehicle restraint
+     506(a) Improper restraint of a child.
+507 Reckless Driving (M)
+508 Hit and Run (M)
+     508(a) H&R of an Emergency Vehicle (F)
+509 Failure to Provide Valid Identification (M)
+     509(a) Failure to Provide Valid Insurance
+     509(b) Faiure to Provide Valid Registration
+     509(c) Failure to Provide Accurate Information
+510 Fleeing a Law Enforcement Officer (F)
+511 Participating in a Motor Vehicle Contest (M)
+512 Improperly Parked Vehicle
+513 Excessively Loud Exhaust Note
+514 Failure to Yield For an Emergency Vehicle
+    `;
+    var string6 = `
+M = Misdemeanor F = Felony
+
+SECTION VI | Deadly Weapons
+601 Unlawful Possession of a Firearm (M)
+    601(a) Felon in Possession of a Firearm (M)
+602 Illegal Discharge of a Firearm (M)
+    602(a) Illegal Discharge from a Vehicle (M)
+    602(b) Discharging within 50 yards of an occupied building (M) 603 Carrying a Concealed Firearm without a Permit (M)
+603 Carrying a Concealed Firearm without a Permit (M)
+604 Possession of a Dangerous Device (M)
+    604(a) Possession of an Explosive Device (F)
+605 Brandishing a Weapon (M)
+    605(a) Brandishing a Firearm (M)
+606 Unlawful Distribution of a Firearm (F)
+    `;
     switch (args[0]) {
       case '1':
         message.channel.send(string1)
+        break;
+      case '2':
+        message.channel.send(string2)
+        break;
+      case '3':
+        message.channel.send(string3)
+        break;
+      case '4':
+        message.channel.send(string4)
+        break;
+      case '5':
+        message.channel.send(string5)
+        break;
+      case '6':
+        message.channel.send(string6)
         break;
       default:
         message.channel.send("Invalid Section. Sections: 1, 2, 3, 4, 5, 6")
