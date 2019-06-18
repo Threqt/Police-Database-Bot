@@ -6,8 +6,7 @@ const bot = new Discord.Client({
 });
 const db = require('quick.db')
 var obj;
-var allCodes = [
-  {
+var allCodes = [{
     number: '101',
     crime: 'Assault (M)',
     type: 1
@@ -1595,6 +1594,36 @@ bot.findPenal = (code) => {
   }
 }
 
+var string1 = `
+M = Misdemeanor F = Felony
+
+SECTION I | Crimes Against the Individual
+101 Assault (M)
+   101(a) Assault with a Deadly Weapon (M)
+102 Battery (M)
+   102(a) Battery with intent to cause serious harm (F)
+   103(b) Sexual Battery (F)
+104 Attempted Homicide (F)
+105 Homicide (F)
+   105(a) First Degree (F)
+   105(b) Second Degree (F)
+   105 (c) Capital (F)
+106 Manslaughter (F)
+   106(a) Vehicular Manslaughter (M)
+   106(b) Weaponized Manslaughter (F)
+107 Torture (F)
+   107(a) Torture with Intent to Kill (F)
+108 Rape (F)
+109 Harassment (M)
+   109(a) Sexual Harassment (M)
+   109(b) Stalking (M)
+   109(c) Violating a Restraining Order (M)
+110 Abuse (F&M)
+   110(a) Domestic Abuse (F)
+   110(b) Child Abuse/Neglect (F)
+   110(c) Animal Abuse (M)
+`;
+
 bot.on("ready", async () => {
   console.log(`${bot.user.username} has been deployed.`)
   bot.user.setActivity("bot related stuff", {
@@ -1607,8 +1636,18 @@ bot.on("message", async message => {
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const cmd = args.shift().toLowerCase();
 
-  if (cmd === ``) {
-
+  if (cmd === `ping`) {
+    let msg = await message.channel.send("Testing ping...")
+    msg.edit(`Pong! Latency is ${message.createdAt - msg.createdAt}ms. API Latency is ${bot.ping}ms.`)
+  } else
+  if (cmd === `viewsection`) {
+    switch (args[0]) {
+      case 1:
+        message.channel.send(string1)
+        break;
+      default:
+        message.channel.send("Invalid Section. Sections: 1, 2, 3, 4, 5, 6")
+    }
   }
 });
 
